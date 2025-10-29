@@ -1,32 +1,36 @@
 #include "car.h"
 /**
- * @brief Construct a new Cherry:: Cherry object
+ * @brief Construct a new Car:: Car object
  * 
  */
-Cherry::Cherry() 
+Car::Car() 
 {
     mTextureTile.loadFromFile("rpg_textures.png");
-    mCherryPlant.setRadius(31);
-    mCherryPlant.setTexture(&mTextureTile);
-    mCherryPlant.setTextureRect(sf::IntRect(64, 32, 62, 62));
-    mCherryPlant.setOrigin(62.f / 2.f, 62.f / 2.f);
+    mCar.setRadius(31);
+    mCar.setTexture(&mTextureTile);
+    mCar.setTextureRect(sf::IntRect(64, 32, 62, 62));
+    mCar.setOrigin(62.f / 2.f, 62.f / 2.f);
+    
 
     mIncrement = sf::Vector2f(4.f, 4.f);
 
     mPosition.x=0;
     mPosition.y=0;
-    mSize.x=0;
+    mSize.x = 0;
     mSize.y = 0;
+
+    sf::Vector2u defaultWindowSize(800, 600);
+    mCar.setPosition(defaultWindowSize.x / 2.f, defaultWindowSize.y / 2.f);
+    
 }
 /**
- * @brief Set border for chery to bounce off
- * 
+ * @brief set car bodarys * 
  * @param xPosition x-coordinate of top left position
  * @param yPosition y-coordinate of top left position
  * @param width width of the bondary
  * @param hight hight of the bondary
  */
-void Cherry::setBondary(int xPosition, int yPosition, int width, int hight)
+void Car::setBondary(int xPosition, int yPosition, int width, int hight)
 {
     if (xPosition > 0)
         mPosition.x=xPosition;
@@ -39,58 +43,54 @@ void Cherry::setBondary(int xPosition, int yPosition, int width, int hight)
 }
 
 /**
- * @brief update the chery
+ * @brief update the car
  * 
  * @param elapsedTime time since last update
  * @param window 
  */
-void Cherry::update(double elapsedTime, sf::RenderWindow& window)
+void Car::update(double elapsedTime, sf::RenderWindow& window)
 {
-    moveCherry(elapsedTime, window);
+    moveCar(elapsedTime, window);
 }
 
 /**
- * @brief reposition chery on the screen
+ * @brief reposition car on the screen
  * 
  * @param elapsedTime time since last update
  * @param window 
  */
-void Cherry::moveCherry(double elapsedTime, sf::RenderWindow& window)
+void Car::moveCar(double elapsedTime, sf::RenderWindow& window)
 {
-    if (mSize.x == 0 || mSize.y == 0){
+    if (mSize.x == 0 || mSize.y == 0) {
         mSize.x = window.getSize().x;
         mSize.y = window.getSize().y;
     }
-        
-    int cherryX = 62;
-    int cherryY = 62;
-    double speed = 60;
+    double speed = 120.0;
+    sf::Vector2f position = mCar.getPosition();
 
-    if ((mCherryPlant.getPosition().x + (cherryX / 2) > mPosition.x + mSize.x && mIncrement.x > 0) ||
-        (mCherryPlant.getPosition().x - (cherryX / 2) < mPosition.x && mIncrement.x < 0))
-    {
-        // Reverse the direction on X axis
-        mIncrement.x = -mIncrement.x;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+        position.x -= speed * elapsedTime;
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+        position.x += speed * elapsedTime;
     }
 
-    if ((mCherryPlant.getPosition().y + (cherryY / 2) > mPosition.y+mSize.y && mIncrement.y > 0) ||
-        (mCherryPlant.getPosition().y - (cherryY / 2) < mPosition.y && mIncrement.y < 0))
-    {
-        // Reverse the direction on Y axis.
-        mIncrement.y = -mIncrement.y;
-    }
+    int carWidth = 62;
+    if (position.x < mPosition.x)
+        position.x = mPosition.x;
+    if (position.x + carWidth > mPosition.x + mSize.x)
+        position.x = mPosition.x + mSize.x - carWidth;
 
-    mCherryPlant.setPosition(
-        mCherryPlant.getPosition().x + mIncrement.x*speed*elapsedTime,
-        mCherryPlant.getPosition().y + mIncrement.y*speed*elapsedTime);
+    mCar.setPosition(position.x, position.y);
 }
+
 
 /**
  * @brief Render objects from the scene onto the window
  * 
  * @param window 
  */
-void Cherry::render(sf::RenderWindow& window)
+void Car::render(sf::RenderWindow& window)
 {
-    window.draw(mCherryPlant);
+    window.draw(mCar);
 }
