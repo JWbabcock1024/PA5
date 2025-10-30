@@ -14,8 +14,8 @@ public:
 
 
 private:
-    Cherry mChery;
-    Button mRestart;  
+    Car mCar;
+   // Button mPlayAgain;  
     Button mRules;
     Button mResults;
     Button mExit;

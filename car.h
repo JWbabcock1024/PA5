@@ -1,11 +1,11 @@
-#ifndef CHERRY_H
-#define CHERRY_H
+#ifndef CAR_H
+#define CAR_H
 #include <SFML/Graphics.hpp>
 
-class Cherry
+class Car
 {
 public:
-    Cherry();
+    Car();
 
     void update(double elapsedTime, sf::RenderWindow& window);
     void render(sf::RenderWindow& window);
@@ -14,12 +14,12 @@ public:
 private:
 
     sf::Texture mTextureTile;
-    sf::CircleShape mCherryPlant;
+    sf::CircleShape mCar;
     sf::Vector2f mIncrement;
     sf::Vector2i mPosition;
     sf::Vector2i mSize;
 
-    void moveCherry(double elapsedTime, sf::RenderWindow& window);
+    void moveCar(double elapsedTime, sf::RenderWindow& window);
    
 };
 #endif

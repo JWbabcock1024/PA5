@@ -3,26 +3,29 @@ Play::Play()
 {
     mFrame.setSize(sf::Vector2f(580, 400));
     mFrame.setPosition(sf::Vector2f(30, 20));
-    mFrame.setOutlineThickness(5);
-    mFrame.setOutlineColor(sf::Color::Red);
+    mFrame.setOutlineThickness(0);
+    mFrame.setOutlineColor(sf::Color::White);
 
-    mChery.setBondary(30, 20, 580, 400);
+    mCar.setBondary(30, 20, 580, 400);
 
     mRules.setPosition(sf::Vector2f(60, 450));
     mRules.setSize(sf::Vector2f(60, 20));
     mRules.setText("Rules");
     mRules.setColorTextNormal(sf::Color::Blue);
     
-    mRestart.setPosition(sf::Vector2f(220, 450));
-    mRestart.setSize(sf::Vector2f(60, 20));
-    mRestart.setText("Restart");
-    mRestart.setColorTextNormal(sf::Color::Blue);
-
-    mResults.setPosition(sf::Vector2f(420, 450));
+    /*
+    mPlayAgain.setPosition(sf::Vector2f(220, 450));
+    mPlayAgain.setSize(sf::Vector2f(60, 20));
+    mPlayAgain.setText("PlayAgain");
+    mPlayAgain.setColorTextNormal(sf::Color::Blue);
+    */
+    
+    mResults.setPosition(sf::Vector2f(310, 450));
     mResults.setSize(sf::Vector2f(60, 20));
     mResults.setText("Results");
     mResults.setColorTextNormal(sf::Color::Blue);
     
+
     mExit.setText("Exit");
     mExit.setPosition({580, 450});
     mExit.setSize({60, 20});
@@ -34,9 +37,9 @@ State Play::handleInput(sf::Event& e,  sf::RenderWindow& window)
     if (mRules.handleInput(e, window)){
         return welcome;
     }
-    if (mRestart.handleInput(e, window)){
-        return game;
-    }
+    //if (mPlayAgain.handleInput(e, window)){
+    //    return game;
+    //}
     if (mResults.handleInput(e, window)){
         return results;
     }
@@ -47,18 +50,18 @@ State Play::handleInput(sf::Event& e,  sf::RenderWindow& window)
 }
 void Play::update(double elapsedTime, sf::RenderWindow& window)
 {
-    mChery.update(elapsedTime, window);
+    mCar.update(elapsedTime, window);
     mRules.update();
-    mRestart.update();
+   // mPlayAgain.update();
     mResults.update();
     mExit.update();
 }
 void Play::render(sf::RenderWindow& window)
 {
     window.draw(mFrame);
-    mChery.render(window);
+    mCar.render(window);
     window.draw(mRules);
-    window.draw(mRestart);
+  //  window.draw(mPlayAgain);
     window.draw(mResults);
     window.draw(mExit);
 }

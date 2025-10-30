@@ -15,7 +15,7 @@ public:
 private:
     sf::Text mResults;
     Button mRules;
-    Button mPlayAgain;  
+   // Button mPlayAgain;
     Button mLeave;
     sf::Font mFont;
 };

@@ -11,13 +11,13 @@ Welcome::Welcome()
     //choose the font size based on button size (I choose half)
     mHeader.setCharacterSize(20);
     // //set label
-    mHeader.setString("Welcome to My Game");
+    mHeader.setString("Welcome to Roadkill");
 
     mRules.setFont(mFont);
     //choose the font size based on button size (I choose half)
     mRules.setCharacterSize(16);
     // //set label
-    mRules.setString("1. rulee 1\n2. rule 2\netc.\n");
+    mRules.setString("Rule 1: collect the coins to get points\nRule 2: avoid hitting the obstacles\nRule 3: have fun\n");
     mRules.setPosition({10, 30});
 
     mStart.setText("Start");

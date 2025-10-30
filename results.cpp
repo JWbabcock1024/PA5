@@ -17,11 +17,12 @@ Results::Results()
     mRules.setText("Play Again");
     mRules.setColorTextNormal(sf::Color::Blue);
     
+    /*
     mPlayAgain.setPosition(sf::Vector2f(320, 450));
     mPlayAgain.setSize(sf::Vector2f(60, 20));
     mPlayAgain.setText("Play Again");
     mPlayAgain.setColorTextNormal(sf::Color::Blue);
-
+    */
 
     mLeave.setPosition(sf::Vector2f(580, 450));
     mLeave.setSize(sf::Vector2f(60, 20));
@@ -31,9 +32,9 @@ Results::Results()
 }
 State Results::handleInput(sf::Event& e,  sf::RenderWindow& window)
 {
-    if (mPlayAgain.handleInput(e, window)){
-        return game;
-    }
+    //if (mPlayAgain.handleInput(e, window)){
+    //    return game;
+    //}
     if (mRules.handleInput(e, window)){
         return welcome;
     }
@@ -46,13 +47,13 @@ State Results::handleInput(sf::Event& e,  sf::RenderWindow& window)
 void Results::update()
 {
     mRules.update();
-    mPlayAgain.update();
+   // mPlayAgain.update();
     mLeave.update();  
 }
 void Results::render(sf::RenderWindow& window)
 {
     window.draw(mResults);
     window.draw(mRules);
-    window.draw(mPlayAgain);
+   // window.draw(mPlayAgain);
     window.draw(mLeave);
 }
