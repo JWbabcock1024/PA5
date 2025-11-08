@@ -29,6 +29,7 @@ Results::Results()
     mLeave.setText("Quit");
     mLeave.setColorTextNormal(sf::Color::Blue);
 
+    score();  // Remove window parameter since we don't need it at construction
 }
 State Results::handleInput(sf::Event& e,  sf::RenderWindow& window)
 {
@@ -54,6 +55,22 @@ void Results::render(sf::RenderWindow& window)
 {
     window.draw(mResults);
     window.draw(mRules);
-   // window.draw(mPlayAgain);
     window.draw(mLeave);
+    window.draw(mScore);  // Add this line to draw the score
 }
+
+
+//working here
+void Results::score() {  // Remove window parameter from definition
+    // Set up the score text properties
+    mScore.setFont(mFont);
+    mScore.setCharacterSize(30);
+    mScore.setFillColor(sf::Color::Blue);
+    
+    // Position score text - use fixed position initially
+    mScore.setPosition(sf::Vector2f(550, 10));
+
+    // Initial score text
+    mScore.setString("Score: 0");
+}
+

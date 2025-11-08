@@ -6,7 +6,7 @@ Play::Play()
     mFrame.setOutlineThickness(0);
     mFrame.setOutlineColor(sf::Color::White);
 
-    mCar.setBondary(30, 20, 580, 400);
+    mCar.setBondary(60, 20, 580, 400);
 
     mRules.setPosition(sf::Vector2f(60, 450));
     mRules.setSize(sf::Vector2f(60, 20));
@@ -30,6 +30,17 @@ Play::Play()
     mExit.setPosition({580, 450});
     mExit.setSize({60, 20});
     mExit.setColorTextNormal(sf::Color::Blue);
+
+    if (!mFont.loadFromFile("college.ttf")) {
+        std::cout << "Error opening font file\n";
+        exit(2);
+    }
+    
+    mScore.setFont(mFont);
+    mScore.setCharacterSize(30);
+    mScore.setFillColor(sf::Color::Blue);
+    mScore.setPosition(sf::Vector2f(550, 10));
+    mScore.setString("Score: 0");
 }
 
 State Play::handleInput(sf::Event& e,  sf::RenderWindow& window)
@@ -64,4 +75,5 @@ void Play::render(sf::RenderWindow& window)
   //  window.draw(mPlayAgain);
     window.draw(mResults);
     window.draw(mExit);
+    window.draw(mScore);
 }

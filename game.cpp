@@ -51,6 +51,9 @@ void Game::update(double elapsedTime, sf::RenderWindow& window)
         case game:
 //std::cout<<"Game::update case game" <<std::endl;
             mGame.update(elapsedTime, window);
+            if (mGameState == results) {
+                mResults.setScore(mGame.getScore());
+            }
             break;
         case results:
 //std::cout<<"Game::update case result" <<std::endl;
@@ -68,7 +71,7 @@ void Game::update(double elapsedTime, sf::RenderWindow& window)
 void Game::render(sf::RenderWindow& window)
 {
     window.clear(sf::Color::Black);
-    //mWindow.draw(mCherryPlant);
+    //mWindow.draw(mCar);
     switch (mGameState)
         {
         case welcome:
@@ -91,3 +94,4 @@ void Game::render(sf::RenderWindow& window)
 // {
 //     return (!mWindow.isOpen());
 // }
+
