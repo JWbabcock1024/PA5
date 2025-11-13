@@ -3,6 +3,7 @@
 #include "states.h"
 #include "button.h"
 #include "car.h"
+#include "coin.h"
 
 class Play
 {
@@ -16,6 +17,7 @@ public:
 
 private:
     Car mCar;
+    Coin mCoin;
    // Button mPlayAgain;  
     Button mRules;
     Button mResults;

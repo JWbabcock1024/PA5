@@ -5,10 +5,10 @@
  */
 Car::Car() 
 {
-    mTextureTile.loadFromFile("rpg_textures.png");
+    mTextureTile.loadFromFile("car.png");
     mCar.setRadius(31);
     mCar.setTexture(&mTextureTile);
-    mCar.setTextureRect(sf::IntRect(64, 32, 62, 62));
+    //mCar.setTextureRect(sf::IntRect(64, 32, 62, 62));
     mCar.setOrigin(62.f / 2.f, 62.f / 2.f);
     
 

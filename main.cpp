@@ -1,13 +1,9 @@
 /**
  * @file main.cpp
- * @author Ekaterina Miller
- * @brief  This program testing class buton
+ * @authors  
+ * @brief  Main file
  * @version 0.1
- * @date 2022-10-16
- * 
- * @copyright Copyright (c) 2022
- * @aknolegment https://code.markrichards.ninja/sfml/how-to-create-simple-buttons-for-your-sfml-game
- * 
+ * @date 11/12/2025
  * 
  */
 
