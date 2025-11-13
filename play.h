@@ -4,6 +4,7 @@
 #include "button.h"
 #include "car.h"
 #include "coin.h"
+#include "roadblock.h"
 
 class Play
 {
@@ -18,6 +19,7 @@ public:
 private:
     Car mCar;
     Coin mCoin;
+    Roadblock mRoadblock;
    // Button mPlayAgain;  
     Button mRules;
     Button mResults;

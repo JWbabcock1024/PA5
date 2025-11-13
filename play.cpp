@@ -8,6 +8,7 @@ Play::Play()
 
     mCar.setBondary(60, 20, 580, 400);
     mCoin.setBondaryCoin(60, 20, 580, 400);
+    mRoadblock.setBondaryRoadblock(60, 20, 580, 400);
 
     mRules.setPosition(sf::Vector2f(60, 450));
     mRules.setSize(sf::Vector2f(60, 20));
@@ -64,6 +65,7 @@ void Play::update(double elapsedTime, sf::RenderWindow& window)
 {
     mCar.update(elapsedTime, window);
     mCoin.updateCoin(elapsedTime, window);
+    mRoadblock.updateRoadblock(elapsedTime, window);
     mRules.update();
    // mPlayAgain.update();
     mResults.update();
@@ -74,6 +76,7 @@ void Play::render(sf::RenderWindow& window)
     window.draw(mFrame);
     mCar.render(window);
     mCoin.renderCoin(window);
+    mRoadblock.renderRoadblock(window);
     window.draw(mRules);
   //  window.draw(mPlayAgain);
     window.draw(mResults);
