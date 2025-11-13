@@ -13,7 +13,7 @@ game.o: game.cpp game.h states.h welcome.h play.h results.h
 welcome.o: welcome.cpp welcome.h states.h button.h
 	$(CC) $(FLAGS) -c $< -o welcome.o
 
-play.o: play.cpp play.h states.h button.h car.h coin.h
+play.o: play.cpp play.h states.h button.h car.h coin.h roadblock.h
 	$(CC) $(FLAGS) -c $< -o play.o
 
 car.o: car.cpp car.h   

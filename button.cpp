@@ -5,7 +5,12 @@
  * @aknolegment https://code.markrichards.ninja/sfml/how-to-create-simple-buttons-for-your-sfml-game
  */
 #include "button.h"
-//Default constructor that loads texture from file “button.png” and font from “college.ttf” file.
+
+// Static member initialization
+sf::Font Button::mFont;
+bool Button::mFontLoaded = false;
+
+//Default constructor that loads texture from file "button.png" and font from "college.ttf" file.
     //set texture for mButton, set the origin to the middle of the button (texture), 
     //set color to White, position to {300,100}, set state to normal, and scale to 100%
     //set font for the text, set the size of the text to the half of Button size, set the origin to the middle of the text 
@@ -43,11 +48,15 @@ Button::Button(std::string s, sf::Vector2f position, sf::Vector2f size, sf::Colo
     mButton.setColor(mButtonColor);
     // //set size as a ration of original size
     mButton.setScale(size.x/imageSize.x, size.y/imageSize.y);
-    //Make label
-    if (!mFont.loadFromFile("college.ttf"))
+    //Make label - load font only once
+    if (!mFontLoaded)
     {
-        std::cout<<"Error opening file\n";
-        exit(2);
+        if (!mFont.loadFromFile("college.ttf"))
+        {
+            std::cout<<"Error opening file\n";
+            exit(2);
+        }
+        mFontLoaded = true;
     }
     mText.setFont(mFont);
     //choose the font size based on button size (I choose half)
