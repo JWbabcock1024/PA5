@@ -53,7 +53,8 @@ private:
     
     //text
     sf::Text mText;
-    sf::Font mFont;
+    static sf::Font mFont;
+    static bool mFontLoaded;
     sf::Color mTextNormal;
     sf::Color mTextHover;
 
