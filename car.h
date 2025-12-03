@@ -10,7 +10,7 @@ public:
     void update(double elapsedTime, sf::RenderWindow& window);
     void render(sf::RenderWindow& window);
     void setBondary(int xPosition, int yPosition, int width, int hight);
-    int getBounds(sf::FloatRect& a);
+    sf::FloatRect getBounds() const;
 
 private:
 

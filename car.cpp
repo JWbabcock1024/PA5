@@ -85,10 +85,11 @@ void Car::moveCar(double elapsedTime, sf::RenderWindow& window)
     mCar.setPosition(position.x, position.y);
 }
 
-int Car::getBounds(sf::FloatRect& a)
+sf::FloatRect Car::getBounds() const
 {
-    return a.getGlobal
+    return mCar.getGlobalBounds();
 }
+
 
 /**
  * @brief Render objects from the scene onto the window
