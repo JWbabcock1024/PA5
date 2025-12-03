@@ -31,7 +31,6 @@ Play::Play()
     mResults.setSize(sf::Vector2f(60, 20));
     mResults.setText("Results");
     mResults.setColorTextNormal(sf::Color::Blue);
-    std::cout << "t" << std::endl;
 
     mExit.setText("Exit");
     mExit.setPosition({580, 450});
@@ -44,7 +43,6 @@ Play::Play()
     mScore.setFillColor(sf::Color::Blue);
     mScore.setPosition(sf::Vector2f(550, 10));
     mScore.setString("Score: 0");
-    std::cout << "ttt" << std::endl;
 }
 
 State Play::handleInput(sf::Event& e,  sf::RenderWindow& window)
@@ -69,29 +67,20 @@ void Play::update(double elapsedTime, sf::RenderWindow& window)
     mCoin.updateCoin(elapsedTime, window);
     mRoadblock.updateRoadblock(elapsedTime, window);
     mRules.update();
+    mCoin.checkCollision(mCoin)
    // mPlayAgain.update();
     mResults.update();
     mExit.update();
-    std::cout << "it loaded" << std::endl;
 }
 void Play::render(sf::RenderWindow& window)
 {
-    std::cout << "1" << std::endl;
     window.draw(mFrame);
-    std::cout << "2" << std::endl;
     mCar.render(window);
-    std::cout << "3" << std::endl;
     mCoin.renderCoin(window);
-    std::cout << "4" << std::endl;
     mRoadblock.renderRoadblock(window);
-    std::cout << "5" << std::endl;
     window.draw(mRules);
-    std::cout << "6" << std::endl;
   //  window.draw(mPlayAgain);
     window.draw(mResults);
-    std::cout << "7" << std::endl;
     window.draw(mExit);
-    std::cout << "8" << std::endl;
     window.draw(mScore);
-    std::cout << "it loaded again" << std::endl;
 }

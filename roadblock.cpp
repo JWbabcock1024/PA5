@@ -114,23 +114,23 @@ void Roadblock::renderRoadblock(sf::RenderWindow& window)
     window.draw(mRoadblock);
 }
 
-// bool Roadblock::BarrierCollision(const sf::FloatRect& col)
-// {
-//     std::cout << "touched=" << touched << " hitCount=" << hitCount << std::endl;
-//     std::cout << "Roadblock pos=" << mRoadblock.getPosition().x << "," << mRoadblock.getPosition().y << std::endl;
-//     if(!touched && checkCollision(mRoadblock.getGlobalBounds(), col))
-//     {
-//         hitCount++;
-//         std::cout<<"counter: " << hitCount << std::endl;
-//         touched = true;
-//         if(hitCount == 3)
-//         {
-//             std::cout << "End game" << std::endl;
-//             return true;
-//         }
-//         std::cout << "barrier" << std::endl;
-//         return false;
-//     }
-//     return false;
-// }
+bool Roadblock::BarrierCollision(const sf::FloatRect& col)
+{
+    std::cout << "touched=" << touched << " hitCount=" << hitCount << std::endl;
+    std::cout << "Roadblock pos=" << mRoadblock.getPosition().x << "," << mRoadblock.getPosition().y << std::endl;
+    if(!touched && checkCollision(mRoadblock.getGlobalBounds(), col))
+    {
+        hitCount++;
+        std::cout<<"counter: " << hitCount << std::endl;
+        touched = true;
+        if(hitCount == 3)
+        {
+            std::cout << "End game" << std::endl;
+            return true;
+        }
+        std::cout << "barrier" << std::endl;
+        return false;
+    }
+    return false;
+}
 

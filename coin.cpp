@@ -113,16 +113,16 @@ void Coin::renderCoin(sf::RenderWindow& window)
     window.draw(mCoin);
 }
 
-// int Coin::CoinCollision(const sf::FloatRect& col)
-// {
-//    // mCar.getGlobalBounds(mCar.getBounds(),mCoin.getBounds())
+int Coin::CoinCollision(const sf::FloatRect& col)
+{
+   // mCar.getGlobalBounds(mCar.getBounds(),mCoin.getBounds())
 
-//     if (!collected && checkCollision(mCoin.getGlobalBounds(), col))
-//     {
-//         tempScore++;
-//         //std::cout << "score" << tempScore << std::endl;
-//         collected = true;
-//     }
+    if (!collected && checkCollision(mCoin.getGlobalBounds(), col))
+    {
+        tempScore++;
+        std::cout << "score" << tempScore << std::endl;
+        collected = true;
+    }
     
-//     return tempScore;
-// }
+    return tempScore;
+}
