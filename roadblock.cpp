@@ -8,10 +8,10 @@
 Roadblock::Roadblock() 
 {
     mTextureTile.loadFromFile("roadblock.png");
-    mRoadblock.setRadius(31);
+    mRoadblock.setRadius(45);
     mRoadblock.setTexture(&mTextureTile);
     //mRoadblock.setTextureRect(sf::IntRect(64, 32, 62, 62));
-    mRoadblock.setOrigin(62.f / 2.f, 62.f / 2.f);
+    mRoadblock.setOrigin(45,45);
     
 
     mIncrement = sf::Vector2f(4.f, 4.f);
@@ -108,4 +108,14 @@ void Roadblock::moveRoadblock(double elapsedTime, sf::RenderWindow& window)
 void Roadblock::renderRoadblock(sf::RenderWindow& window)
 {
     window.draw(mRoadblock);
+}
+
+void Roadblock::resetPosition(){ // -A
+    float startY = mPosition.y + mRoadblock.getRadius() + 2.f;
+    if (mSize.x > 0) {
+        int randX = mPosition.x + (std::rand() % (mSize.x - (int)(mRoadblock.getRadius()*2)));
+        mRoadblock.setPosition(randX + mRoadblock.getRadius(), startY);
+    } else {
+        mRoadblock.setPosition(mPosition.x + mRoadblock.getRadius(), startY);
+    }
 }

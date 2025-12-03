@@ -12,6 +12,9 @@ public:
     void updateRoadblock(double elapsedTime, sf::RenderWindow& window);
     void renderRoadblock(sf::RenderWindow& window);
     void setBondaryRoadblock(int xPosition, int yPosition, int width, int hight);
+    sf::Vector2f getPosition() const{return mRoadblock.getPosition();} //   -A
+    sf::FloatRect getGlobalBounds() const{return mRoadblock.getGlobalBounds();} //  -A
+    void resetPosition(); //    -A
 
 private:
 

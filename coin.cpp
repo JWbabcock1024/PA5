@@ -12,7 +12,7 @@ Coin::Coin()
     mCoin.setRadius(31);
     mCoin.setTexture(&mTextureTile);
     //mCoin.setTextureRect(sf::IntRect(64, 32, 62, 62));
-    mCoin.setOrigin(62.f / 2.f, 62.f / 2.f);
+    mCoin.setOrigin(31, 31);
     
 
     mIncrement = sf::Vector2f(4.f, 4.f);
@@ -109,4 +109,14 @@ void Coin::moveCoin(double elapsedTime, sf::RenderWindow& window)
 void Coin::renderCoin(sf::RenderWindow& window)
 {
     window.draw(mCoin);
+}
+
+void Coin::resetPosition(){ // -A
+    float startY = mPosition.y + mCoin.getRadius() + 2.f;
+    if (mSize.x > 0) {
+        int randX = mPosition.x + (std::rand() % (mSize.x - (int)(mCoin.getRadius()*2)));
+        mCoin.setPosition(randX + mCoin.getRadius(), startY);
+    } else {
+        mCoin.setPosition(mPosition.x + mCoin.getRadius(), startY);
+    }
 }
