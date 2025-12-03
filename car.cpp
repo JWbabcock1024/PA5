@@ -20,7 +20,7 @@ Car::Car()
     mSize.y = 0;
 
     sf::Vector2u defaultWindowSize(800, 600);
-    mCar.setPosition(defaultWindowSize.x / 2.f, defaultWindowSize.y / 2.f);
+    mCar.setPosition(defaultWindowSize.x / 2.f, defaultWindowSize.y - 225.f);
     
 }
 /**

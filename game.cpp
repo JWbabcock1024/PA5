@@ -51,12 +51,10 @@ void Game::update(double elapsedTime, sf::RenderWindow& window)
         case game:
 //std::cout<<"Game::update case game" <<std::endl;
             mGame.update(elapsedTime, window);
-            if (mGameState == results) {
-                mResults.setScore(mGame.getScore());
-            }
             break;
         case results:
 //std::cout<<"Game::update case result" <<std::endl;
+            mResults.setScore(mGame.getScore());
             mResults.update();
             break;
         case quit:
