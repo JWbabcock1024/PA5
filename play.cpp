@@ -27,10 +27,10 @@ Play::Play()
     mPlayAgain.setColorTextNormal(sf::Color::Blue);
     */
     
-    mResults.setPosition(sf::Vector2f(310, 450));
-    mResults.setSize(sf::Vector2f(60, 20));
-    mResults.setText("Results");
-    mResults.setColorTextNormal(sf::Color::Blue);
+    mResultsButton.setPosition(sf::Vector2f(310, 450));
+    mResultsButton.setSize(sf::Vector2f(60, 20));
+    mResultsButton.setText("Results");
+    mResultsButton.setColorTextNormal(sf::Color::Blue);
 
     mExit.setText("Exit");
     mExit.setPosition({580, 450});
@@ -41,8 +41,9 @@ Play::Play()
     mScore.setFont(mFont);
     mScore.setCharacterSize(30);
     mScore.setFillColor(sf::Color::Blue);
-    mScore.setPosition(sf::Vector2f(550, 10));
-    mScore.setString("Score: 0");
+    //mScore.setPosition(sf::Vector2f(550, 10));
+    mScore.setPosition(sf::Vector2f(500, 10));
+    mScore.setString("score: 0");
 }
 
 State Play::handleInput(sf::Event& e,  sf::RenderWindow& window)
@@ -53,7 +54,7 @@ State Play::handleInput(sf::Event& e,  sf::RenderWindow& window)
     //if (mPlayAgain.handleInput(e, window)){
     //    return game;
     //}
-    if (mResults.handleInput(e, window)){
+    if (mResultsButton.handleInput(e, window)){
         return results;
     }
     if (mExit.handleInput(e, window)){
@@ -63,13 +64,21 @@ State Play::handleInput(sf::Event& e,  sf::RenderWindow& window)
 }
 void Play::update(double elapsedTime, sf::RenderWindow& window)
 {
-    mCar.update(elapsedTime, window);
-    mCoin.updateCoin(elapsedTime, window);
-    mRoadblock.updateRoadblock(elapsedTime, window);
+    if(!gameOver)
+    {
+        mCar.update(elapsedTime, window);
+        mCoin.updateCoin(elapsedTime, window);
+        mRoadblock.updateRoadblock(elapsedTime, window);
+        if(mRoadblock.BarrierCollision(mCar.getBounds()))
+        {
+            gameOver = true;
+        }
+        mCurrentScore = (mCoin.CoinCollision(mCar.getBounds())); // returns the amount of coins collided with / collected
+        setScore(mCurrentScore);
+    }
     mRules.update();
-    mCoin.checkCollision(mCar.getBounds());
    // mPlayAgain.update();
-    mResults.update();
+    mResultsButton.update();
     mExit.update();
 }
 void Play::render(sf::RenderWindow& window)
@@ -80,7 +89,7 @@ void Play::render(sf::RenderWindow& window)
     mRoadblock.renderRoadblock(window);
     window.draw(mRules);
   //  window.draw(mPlayAgain);
-    window.draw(mResults);
+    window.draw(mResultsButton);
     window.draw(mExit);
     window.draw(mScore);
 }

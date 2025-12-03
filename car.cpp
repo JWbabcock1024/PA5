@@ -85,6 +85,11 @@ void Car::moveCar(double elapsedTime, sf::RenderWindow& window)
     mCar.setPosition(position.x, position.y);
 }
 
+/**
+ * @brief used to retrieve global bounds
+ * 
+ * @return sf::FloatRect 
+ */
 sf::FloatRect Car::getBounds() const
 {
     return mCar.getGlobalBounds();

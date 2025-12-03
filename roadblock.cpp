@@ -114,21 +114,26 @@ void Roadblock::renderRoadblock(sf::RenderWindow& window)
     window.draw(mRoadblock);
 }
 
+/**
+ * @brief used to check collision between car and barrier
+ * 
+ * @param col the other colliding item
+ * @return true if 3 barriers were hit
+ * @return false if less than 3 barriers were hit
+ */
 bool Roadblock::BarrierCollision(const sf::FloatRect& col)
 {
-    std::cout << "touched=" << touched << " hitCount=" << hitCount << std::endl;
-    std::cout << "Roadblock pos=" << mRoadblock.getPosition().x << "," << mRoadblock.getPosition().y << std::endl;
     if(!touched && checkCollision(mRoadblock.getGlobalBounds(), col))
     {
         hitCount++;
-        std::cout<<"counter: " << hitCount << std::endl;
+        // std::cout<<"counter: " << hitCount << std::endl;
         touched = true;
         if(hitCount == 3)
         {
             std::cout << "End game" << std::endl;
             return true;
         }
-        std::cout << "barrier" << std::endl;
+        // std::cout << "barrier" << std::endl;
         return false;
     }
     return false;

@@ -15,6 +15,7 @@ public:
     void render(sf::RenderWindow& window);
     void setScore(int score) { mScore.setString("Score: " + std::to_string(score)); }
     int getScore() const { return mCurrentScore; }
+    bool gameIsOver(){ return gameOver; }
 
 private:
     Car mCar;
@@ -22,12 +23,13 @@ private:
     Roadblock mRoadblock;
    // Button mPlayAgain;  
     Button mRules;
-    Button mResults;
+    Button mResultsButton;
     Button mExit;
     sf::RectangleShape mFrame;
     sf::Text mScore;
     int mCurrentScore = 0;
     sf::Font mFont;
+    bool gameOver=false;
 };
 
 #endif

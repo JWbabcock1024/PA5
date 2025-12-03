@@ -113,16 +113,19 @@ void Coin::renderCoin(sf::RenderWindow& window)
     window.draw(mCoin);
 }
 
+/**
+ * @brief detects collision between coin and car
+ * 
+ * @param col item being collided with
+ * @return int returns the amount of coins contacted
+ */
 int Coin::CoinCollision(const sf::FloatRect& col)
 {
-   // mCar.getGlobalBounds(mCar.getBounds(),mCoin.getBounds())
-
     if (!collected && checkCollision(mCoin.getGlobalBounds(), col))
     {
         tempScore++;
-        std::cout << "score" << tempScore << std::endl;
+        // std::cout << "score" << tempScore << std::endl;
         collected = true;
     }
-    
     return tempScore;
 }
