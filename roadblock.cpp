@@ -45,7 +45,9 @@ void Roadblock::setBondaryRoadblock(int xPosition, int yPosition, int width, int
         mSize.y = hight;
 
     
-    float startX = mPosition.x + (mSize.x > 0 ? mSize.x / 2.f : 0.f);
+    // float startX = mPosition.x + (mSize.x > 0 ? mSize.x / 2.f : 0.f);
+    // changed so that the roadblock and coin dont conflict with collision to start
+    float startX = mPosition.x;
     float startY = mPosition.y + mRoadblock.getRadius() + 5.f;
     mRoadblock.setPosition(startX, startY);
 }
@@ -89,6 +91,7 @@ void Roadblock::moveRoadblock(double elapsedTime, sf::RenderWindow& window)
     
     if (position.y - mRoadblock.getRadius() > mPosition.y + mSize.y) {
         position.y = mPosition.y + mRoadblock.getRadius() + 2.f;
+        touched=false;
         if (mSize.x > diameter) {
             int randX = mPosition.x + (std::rand() % (mSize.x - static_cast<int>(diameter)));
             position.x = static_cast<float>(randX) + mRoadblock.getRadius();
@@ -110,3 +113,24 @@ void Roadblock::renderRoadblock(sf::RenderWindow& window)
 {
     window.draw(mRoadblock);
 }
+
+// bool Roadblock::BarrierCollision(const sf::FloatRect& col)
+// {
+//     std::cout << "touched=" << touched << " hitCount=" << hitCount << std::endl;
+//     std::cout << "Roadblock pos=" << mRoadblock.getPosition().x << "," << mRoadblock.getPosition().y << std::endl;
+//     if(!touched && checkCollision(mRoadblock.getGlobalBounds(), col))
+//     {
+//         hitCount++;
+//         std::cout<<"counter: " << hitCount << std::endl;
+//         touched = true;
+//         if(hitCount == 3)
+//         {
+//             std::cout << "End game" << std::endl;
+//             return true;
+//         }
+//         std::cout << "barrier" << std::endl;
+//         return false;
+//     }
+//     return false;
+// }
+

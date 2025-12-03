@@ -13,6 +13,7 @@ public:
     void updateRoadblock(double elapsedTime, sf::RenderWindow& window);
     void renderRoadblock(sf::RenderWindow& window);
     void setBondaryRoadblock(int xPosition, int yPosition, int width, int hight);
+    bool BarrierCollision(const sf::FloatRect& col);
 
 private:
 
@@ -21,6 +22,8 @@ private:
     sf::Vector2f mIncrement;
     sf::Vector2i mPosition;
     sf::Vector2i mSize;
+    bool touched =false;
+    int hitCount=0;
 
     void moveRoadblock(double elapsedTime, sf::RenderWindow& window);
    
