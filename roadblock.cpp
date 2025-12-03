@@ -118,7 +118,6 @@ void Roadblock::resetPosition(){ // -A
         if (validWidth > 0) {
             float randX = mPosition.x + mRoadblock.getRadius() + (std::rand() % (int)validWidth);
             float randY = (std::rand() % 100);
-            std::cout << "Roadblock respawn: X=" << randX << " Y=" << (startY + randY) << std::endl;
             mRoadblock.setPosition(randX, startY + randY);
         } else {
             mRoadblock.setPosition(mPosition.x + mRoadblock.getRadius(), startY);

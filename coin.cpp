@@ -119,7 +119,6 @@ void Coin::resetPosition(){ // -A
         if (validWidth > 0) {
             float randX = mPosition.x + mCoin.getRadius() + (std::rand() % (int)validWidth);
             float randY = (std::rand() % 100);
-            std::cout << "Coin respawn: X=" << randX << " Y=" << (startY + randY) << std::endl;
             mCoin.setPosition(randX, startY + randY);
         } else {
             mCoin.setPosition(mPosition.x + mCoin.getRadius(), startY);
