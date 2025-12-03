@@ -5,11 +5,12 @@
  */
 Car::Car() 
 {
+    float r = 31.f;
     mTextureTile.loadFromFile("car.png");
-    mCar.setRadius(31);
+    mCar.setRadius(r);
     mCar.setTexture(&mTextureTile);
     //mCar.setTextureRect(sf::IntRect(64, 32, 62, 62));
-    mCar.setOrigin(62.f / 2.f, 62.f / 2.f);
+    mCar.setOrigin(r,r);
     
 
     mIncrement = sf::Vector2f(4.f, 4.f);

@@ -7,11 +7,12 @@
  */
 Roadblock::Roadblock() 
 {
+    float r = 31.f;
     mTextureTile.loadFromFile("roadblock.png");
-    mRoadblock.setRadius(31);
+    mRoadblock.setRadius(r);
     mRoadblock.setTexture(&mTextureTile);
     //mRoadblock.setTextureRect(sf::IntRect(64, 32, 62, 62));
-    mRoadblock.setOrigin(62.f / 2.f, 62.f / 2.f);
+    mRoadblock.setOrigin(r,r);
     
 
     mIncrement = sf::Vector2f(4.f, 4.f);
