@@ -3,8 +3,9 @@
 #ifndef COIN_H
 #define COIN_H
 #include <SFML/Graphics.hpp>
+#include "collision.h"
 
-class Coin
+class Coin : public Collision
 {
 public:
     Coin();
@@ -12,6 +13,7 @@ public:
     void updateCoin(double elapsedTime, sf::RenderWindow& window);
     void renderCoin(sf::RenderWindow& window);
     void setBondaryCoin(int xPosition, int yPosition, int width, int hight);
+    int CoinCollision(const sf::FloatRect& col);
 
 private:
 
@@ -20,6 +22,8 @@ private:
     sf::Vector2f mIncrement;
     sf::Vector2i mPosition;
     sf::Vector2i mSize;
+    bool collected=false;
+    int tempScore=0;
 
     void moveCoin(double elapsedTime, sf::RenderWindow& window);
    

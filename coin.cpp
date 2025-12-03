@@ -90,6 +90,7 @@ void Coin::moveCoin(double elapsedTime, sf::RenderWindow& window)
     
     if (position.y - mCoin.getRadius() > mPosition.y + mSize.y) {
         position.y = mPosition.y + mCoin.getRadius() + 2.f;
+        collected=false;
         if (mSize.x > diameter) {
             int randX = mPosition.x + (std::rand() % (mSize.x - static_cast<int>(diameter)));
             position.x = static_cast<float>(randX) + mCoin.getRadius();
@@ -110,4 +111,18 @@ void Coin::moveCoin(double elapsedTime, sf::RenderWindow& window)
 void Coin::renderCoin(sf::RenderWindow& window)
 {
     window.draw(mCoin);
+}
+
+int Coin::CoinCollision(const sf::FloatRect& col)
+{
+   // mCar.getGlobalBounds(mCar.getBounds(),mCoin.getBounds())
+
+    if (!collected && checkCollision(mCoin.getGlobalBounds(), col))
+    {
+        tempScore++;
+        //std::cout << "score" << tempScore << std::endl;
+        collected = true;
+    }
+    
+    return tempScore;
 }

@@ -3,8 +3,9 @@
 #ifndef ROADBLOCK_H
 #define ROADBLOCK_H
 #include <SFML/Graphics.hpp>
+#include "collision.h"
 
-class Roadblock
+class Roadblock : public Collision
 {
 public:
     Roadblock();
