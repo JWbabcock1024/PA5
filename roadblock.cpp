@@ -113,8 +113,15 @@ void Roadblock::renderRoadblock(sf::RenderWindow& window)
 void Roadblock::resetPosition(){ // -A
     float startY = mPosition.y + mRoadblock.getRadius() + 2.f;
     if (mSize.x > 0) {
-        int randX = mPosition.x + (std::rand() % (mSize.x - (int)(mRoadblock.getRadius()*2)));
-        mRoadblock.setPosition(randX + mRoadblock.getRadius(), startY);
+        float diameterX = mRoadblock.getRadius() * 2.f;
+        float validWidth = mSize.x - diameterX;
+        if (validWidth > 0) {
+            float randX = mPosition.x + mRoadblock.getRadius() + (std::rand() % (int)validWidth);
+            float randY = (std::rand() % 100);
+            mRoadblock.setPosition(randX, startY + randY);
+        } else {
+            mRoadblock.setPosition(mPosition.x + mRoadblock.getRadius(), startY);
+        }
     } else {
         mRoadblock.setPosition(mPosition.x + mRoadblock.getRadius(), startY);
     }

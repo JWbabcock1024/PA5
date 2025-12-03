@@ -11,8 +11,8 @@ Play::Play()
 
     //set boundaries for car, coin, roadblock
     mCar.setBondary(60, 20, 580, 400);
-    mCoin.setBondaryCoin(60, 20, 580, 400);
-    mRoadblock.setBondaryRoadblock(60, 20, 580, 400);
+   // mCoin.setBondaryCoin(60, 20, 580, 400);
+   // mRoadblock.setBondaryRoadblock(60, 20, 580, 400);
 
     //**********************Buttons**********************
     mRules.setPosition(sf::Vector2f(60, 450));
@@ -144,14 +144,12 @@ void Play::update(double elapsedTime, sf::RenderWindow& window)
         if(coinCollected()){ //-A
             mCurrentScore += 1;
             mScore.setString("Score: " + std::to_string(mCurrentScore));
-            //reset coin to top
-            mCoin.setBondaryCoin(60,20,580,400);
+            // Coin respawn handled by Coin::resetPosition()
         }
 
         if(hitRoadblock()){ //-A
             mLives = std::max(0, mLives - 1);
-            //reset roadblock to top
-            mRoadblock.setBondaryRoadblock(60,20,580,400);
+            // Roadblock respawn handled by Roadblock::resetPosition()
             if (mLives <= 0){
                 mGameOver = true;
 
