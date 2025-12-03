@@ -68,7 +68,7 @@ void Results::score() {  // Remove window parameter from definition
     mScore.setFillColor(sf::Color::Blue);
     
     // Position score text - use fixed position initially
-    mScore.setPosition(sf::Vector2f(550, 10));
+    mScore.setPosition(sf::Vector2f(490, 10));
 
     // Initial score text
     mScore.setString("Score: 0");

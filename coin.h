@@ -12,6 +12,9 @@ public:
     void updateCoin(double elapsedTime, sf::RenderWindow& window);
     void renderCoin(sf::RenderWindow& window);
     void setBondaryCoin(int xPosition, int yPosition, int width, int hight);
+    sf::Vector2f getPosition() const{return mCoin.getPosition();}
+    sf::FloatRect getGlobalBounds() const{return mCoin.getGlobalBounds();}
+    void resetPosition(); //    -A
 
 private:
 
