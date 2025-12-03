@@ -3,6 +3,7 @@
 #ifndef ROADBLOCK_H
 #define ROADBLOCK_H
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
 class Roadblock
 {

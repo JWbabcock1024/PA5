@@ -114,8 +114,16 @@ void Coin::renderCoin(sf::RenderWindow& window)
 void Coin::resetPosition(){ // -A
     float startY = mPosition.y + mCoin.getRadius() + 2.f;
     if (mSize.x > 0) {
-        int randX = mPosition.x + (std::rand() % (mSize.x - (int)(mCoin.getRadius()*2)));
-        mCoin.setPosition(randX + mCoin.getRadius(), startY);
+        float diameterX = mCoin.getRadius() * 2.f;
+        float validWidth = mSize.x - diameterX;
+        if (validWidth > 0) {
+            float randX = mPosition.x + mCoin.getRadius() + (std::rand() % (int)validWidth);
+            float randY = (std::rand() % 100);
+            std::cout << "Coin respawn: X=" << randX << " Y=" << (startY + randY) << std::endl;
+            mCoin.setPosition(randX, startY + randY);
+        } else {
+            mCoin.setPosition(mPosition.x + mCoin.getRadius(), startY);
+        }
     } else {
         mCoin.setPosition(mPosition.x + mCoin.getRadius(), startY);
     }
