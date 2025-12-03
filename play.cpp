@@ -67,7 +67,7 @@ void Play::update(double elapsedTime, sf::RenderWindow& window)
     mCoin.updateCoin(elapsedTime, window);
     mRoadblock.updateRoadblock(elapsedTime, window);
     mRules.update();
-    mCoin.checkCollision(mCoin)
+    mCoin.checkCollision(mCar.get)
    // mPlayAgain.update();
     mResults.update();
     mExit.update();
